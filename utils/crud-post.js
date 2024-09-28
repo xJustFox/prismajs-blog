@@ -45,8 +45,14 @@ const deletePost = (slug, cf) => {
         .catch(err => console.error(err))
 }
 
-const readPublishedPosts = (cf) => {
-    prisma.post.findMany({where: {published: true}})
+const filterPublishedPosts = (cf) => {
+    prisma.post.findMany({ where: { published: true } })
+        .then(posts => cf(posts))
+        .catch(err => console.error(err))
+}
+
+const filterPostsByKeyword = (keyword, cf) => {
+    prisma.post.findMany({ where: { content: { contains: keyword } } })
         .then(posts => cf(posts))
         .catch(err => console.error(err))
 }
@@ -57,5 +63,6 @@ module.exports = {
     createPost,
     updatePost,
     deletePost,
-    readPublishedPosts
+    filterPublishedPosts,
+    filterPostsByKeyword
 }
