@@ -45,10 +45,17 @@ const deletePost = (slug, cf) => {
         .catch(err => console.error(err))
 }
 
+const readPublishedPosts = (cf) => {
+    prisma.post.findMany({where: {published: true}})
+        .then(posts => cf(posts))
+        .catch(err => console.error(err))
+}
+
 module.exports = {
     readPosts,
     readPostBySlug,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    readPublishedPosts
 }
