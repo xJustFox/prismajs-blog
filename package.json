@@ -4,7 +4,8 @@
   "description": "Descrizione: <br>\r Create un nuovo progetto Node.js (senza Express) ed installate la Prisma CLI e il Prisma Client. Successivamente definite i modelli **Post**, **Category** e **Tag** nel file `schema.prisma`.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js"
   },
   "keywords": [],
   "author": "",
