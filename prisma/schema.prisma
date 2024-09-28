@@ -16,7 +16,7 @@ datasource db {
 model Post {
   id         Int       @id @default(autoincrement())
   tags       Tag[]
-  Category   Category? @relation(fields: [categoryId], references: [id])
+  category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int?
   title      String
   slug       String    @unique
@@ -35,6 +35,6 @@ model Category {
 
 model Tag {
   id   Int    @id @default(autoincrement())
-  Post Post[]
+  post Post[]
   name String
 }
